@@ -70,9 +70,11 @@
 			
 			this.simpleBox.find('.icon-chevron-left').on('click', function(){
 				if(self.firstImg === 0){
+					self.simpleImage.fadeOut('fast');
 					self.nextImg(self.collection.length -1);
 					self.firstImg = self.collection.length -1;
 				}else{
+					self.simpleImage.fadeOut('fast');
 					self.nextImg(self.firstImg - 1);
 					self.firstImg = self.firstImg - 1;
 				}
@@ -80,9 +82,11 @@
 			});
 			this.simpleBox.find('.icon-chevron-right').on('click', function(){
 				if(self.firstImg === self.collection.length - 1){
+					self.simpleImage.fadeOut('fast');
 					self.nextImg(0);
 					self.firstImg = 0;
 				}else{
+					self.simpleImage.fadeOut('fast');
 					self.nextImg(self.firstImg + 1);
 					self.firstImg = self.firstImg + 1;
 				}
@@ -142,6 +146,7 @@
 		//Прототип метода "следующее изображение"
 		simpleLB.prototype.nextImg = function(imgCount){
 			var self = this;
+			self.simpleImage.fadeIn('fast');
 			this.simpleImage.attr('src', self.collection[imgCount].link);
 			if(this.windowWidth < self.simpleImage.width()){
 				this.simpleImage.css({'width': this.windowWidth * 0.9  + 'px'});
