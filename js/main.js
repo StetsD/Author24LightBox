@@ -22,6 +22,7 @@
 			this.windowWidth  = $(window).innerWidth();
 			this.windowHeight = $(window).innerHeight();
 			this.topPos       = this.windowHeight * 0.05;
+			this.firstImg;
 			this.eventHandlers();
 			this.buildDOM();
 			this.searchElements();
@@ -33,6 +34,7 @@
 			var self = this;
 			//Определение колекции ДОМ объектов с атрибутком "data-simpleLB"
 			$('body').on('click', 'a[data-simpleLB]', function(e){
+				self.firstImg = $('a[data-simpleLB]').index(this);
 				self.startSLB($(e.currentTarget));
 				return false;
 			});
@@ -59,34 +61,38 @@
 				self.close();
 				return false;
 			});
-			
 			this.simpleBox.hide().on('click', function(e){
 				if($(e.target).attr('id') == "simpleBox"){
 					self.close();
 				}
 				return false;
 			});
-			/*
+			
 			this.simpleBox.find('.icon-chevron-left').on('click', function(){
-				if(self.roundIndex === 0){
+				if(self.firstImg === 0){
 					self.nextImg(self.collection.length -1);
+					self.firstImg = self.collection.length -1;
 				}else{
-					self.nextImg(self.roundIndex - 1);
+					self.nextImg(self.firstImg - 1);
+					self.firstImg = self.firstImg - 1;
 				}
 				return false;
 			});
 			this.simpleBox.find('.icon-chevron-right').on('click', function(){
-				if(self.roundIndex === self.collection.length - 1){
+				if(self.firstImg === self.collection.length - 1){
 					self.nextImg(0);
+					self.firstImg = 0;
 				}else{
-					self.nextImg(self.roundIndex + 1);
+					self.nextImg(self.firstImg + 1);
+					self.firstImg = self.firstImg + 1;
 				}
 				return false;
-			});*/
+			});
+
 		};
 
 		//Вкл. Лайтбокс
-		simpleLB.prototype.startSLB = function(element){
+		simpleLB.prototype.startSLB = function(element, index){
 			var self = this;
 			var winObj = $(window);
 			var imgCount = 0;
@@ -130,18 +136,25 @@
 
 			var positionTop = winObj.scrollTop() + self.topPos;
 			this.simpleBox.css({top: positionTop + 'px'});
-			//this.simpleBoxWrap.css({'width': self.simpleImage.width() + 'px', 'height': self.simpleImage.height() + 'px'});
-
-
-			console.log(this.windowHeight);
-			
+			//this.simpleBoxWrap.css({'width': self.simpleImage.width() + 'px', 'height': self.simpleImage.height() + 'px'});	
 		};
 
 		//Прототип метода "следующее изображение"
 		simpleLB.prototype.nextImg = function(imgCount){
 			var self = this;
-		};
+			this.simpleImage.attr('src', self.collection[imgCount].link);
+			if(this.windowWidth < self.simpleImage.width()){
+				this.simpleImage.css({'width': this.windowWidth * 0.9  + 'px'});
+				this.simpleBoxWrap.css({'width': this.windowWidth * 0.9  + 'px', 'height': self.simpleImage.height()  + 'px'});
+			}else if(this.windowHeight < self.simpleImage.height()){
+				this.simpleImage.css({'height': this.windowHeight * 0.9  + 'px'});
+				this.simpleBoxWrap.css({'height': this.windowHeight * 0.9  + 'px', 'width': self.simpleImage.width()  + 'px'});
+			}else{
+				this.simpleBoxWrap.css({'height': self.simpleImage.height()  + 'px', 'width': self.simpleImage.width()  + 'px'});
+			}
+			console.log();
 
+		};
 		//Выкл. Лайтбокс
 		simpleLB.prototype.close = function(){
 			var self = this;
