@@ -1,18 +1,14 @@
 (function(){
 	//Определяем локальную переменную jQuery
 	var $ = jQuery;
-
 	//Модуль автозапуска конструктора опций Лайтбокса
 	var simpleLBOptions = (function(){
 		function simpleLBOptions(){
-			this.slbAround    = false;
 			this.slbDuration = 300;
-			this.slbResize    = 700;
 			this.zipImg = true;
 		}
 		return simpleLBOptions;
 	})();
-
 	//Модуль автозапуска конструктора объекта Лайтбокса и определения его основных свойств и методов
 	var simpleLB = (function(){
 		function simpleLB(options){
@@ -28,7 +24,6 @@
 			this.searchElements();
 			this.buildEvents();
 		}
-
 		//Прототип метода прослушивания событий
 		simpleLB.prototype.eventHandlers = function(){
 			var self = this;
@@ -39,13 +34,11 @@
 				return false;
 			});
 		};
-
 		//Построение ДОМ структуры Лайтбокса
 		simpleLB.prototype.buildDOM = function(){
 			var self = this;
 			$('body').append('<div id="backgroundSLB" class="backgroundSLB"></div><div id="simpleBox" class="simpleBox"><div id="simpleBoxWrap" class="simpleBoxWrap"><img src="" class="BoxWrapImg" id="BoxWrapImg" /><div id="BoxWrapNav" class="BoxWrapNav"><a href class="chevron-left"><div class="icon-chevron-left"></div></a><a href class="chevron-right"><div class="icon-chevron-right"></div></a></div></div></div>');
 		}
-
 		//Поис и привязка ДОМ элементов к свойствам прототипа объекта Лайтбокса
 		simpleLB.prototype.searchElements = function(){
 			this.backgroundSLB   = $('#backgroundSLB');
@@ -53,7 +46,6 @@
       this.simpleBoxWrap   = this.simpleBox.find('.simpleBoxWrap');
       this.simpleImage     = this.simpleBoxWrap.find('#BoxWrapImg');
 		}
-
 		//Добавление стилизации и добавление событий инициализированным элементам Лайтбокса
 		simpleLB.prototype.buildEvents = function(){
 			var self = this;
@@ -122,30 +114,24 @@
 					return false;
 				});
 			}
-
 		};
-
 		//Вкл. Лайтбокс
 		simpleLB.prototype.startSLB = function(element, index){
 			var self = this;
 			var winObj = $(window);
 			var imgCount = 0;
 			this.collection = [];
-
 			self.backgroundSLB.css('display', 'block');
 			self.backgroundSLB.animate({'opacity':'0.70'}, self.slbDuration, 'linear');
 			self.simpleImage.css('display', 'block');
 			self.simpleImage.animate({'opacity':'1.0'}, self.slbDuration, 'linear');
 			self.simpleBox.css('display', 'block');
 			self.simpleBox.animate({'opacity':'1.0'}, self.slbDuration, 'linear');
-
 			function collectionItAdd(element){
 				self.collection.push({link: element.attr('href')});
 			};
-
 			var collectionSeparate = element.attr('data-simpleLB');
 			var links;
-
 			if(collectionSeparate){
 				links = $(element.prop('tagName') + '[data-simpleLB="' + collectionSeparate + '"]');
 				for(var i = 0; i < links.length; i++){
@@ -165,14 +151,9 @@
 			}else{
 				this.simpleBoxWrap.css({'height': self.simpleImage.height()  + 'px', 'width': self.simpleImage.width()  + 'px'});
 			}
-
-
-
 			var positionTop = winObj.scrollTop() + self.topPos;
 			this.simpleBox.css({top: positionTop + 'px'});
-			//this.simpleBoxWrap.css({'width': self.simpleImage.width() + 'px', 'height': self.simpleImage.height() + 'px'});	
 		};
-
 		//Прототип метода "следующее изображение"
 		simpleLB.prototype.nextImg = function(imgCount){
 			var self = this;
@@ -188,7 +169,6 @@
 				this.simpleBoxWrap.css({'height': self.simpleImage.height()  + 'px', 'width': self.simpleImage.width()  + 'px'});
 			}
 			console.log();
-
 		};
 		//Выкл. Лайтбокс
 		simpleLB.prototype.close = function(){
@@ -202,11 +182,9 @@
 			self.simpleBox.animate({'opacity':'0.0'}, self.slbDuration, 'linear', function(){
 				self.simpleBox.css('display', 'none');
 			});
-			
 		}
 		return simpleLB;
 	})();
-
 	//Атосоздание объекта опций и самого лайтбокса
 	$(function(){
 		var options = new simpleLBOptions();
@@ -223,5 +201,4 @@
 		$('.content').width($(window).innerWidth());
 		$('.simpleBoxWrap').css({'width': $(window).innerWidth()  + 'px'});
   }
-	
 })();

@@ -148,7 +148,6 @@ header{
 .cnt_lightbox{
   margin:20px 0 0 0px;
   & .lightbox_it{
-    margin: 0 12px 12px 0;
     &:hover img{
       @include bShad(2px, 3px, 2px, 2px, rgba(0,0,0,0.6));
       margin-top:-8px;
@@ -157,6 +156,7 @@ header{
       margin:0;
     }
     & img{
+      margin: 0 11px 12px 0;
       @include tran(all 0.2s ease-out);
       @include bShad(2px, 3px, 1px, 0px, rgba(0,0,0,0.5));
     }

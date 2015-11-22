@@ -651,22 +651,21 @@ header {
 
 .cnt_lightbox {
   margin: 20px 0 0 0px; }
-  .cnt_lightbox .lightbox_it {
-    margin: 0 12px 12px 0; }
-    .cnt_lightbox .lightbox_it:hover img {
-      -webkit-box-shadow: 2px 3px 2px 2px rgba(0, 0, 0, 0.6);
-      -moz-box-shadow: 2px 3px 2px 2px rgba(0, 0, 0, 0.6);
-      box-shadow: 2px 3px 2px 2px rgba(0, 0, 0, 0.6);
-      margin-top: -8px; }
-    .cnt_lightbox .lightbox_it:last-child {
-      margin: 0; }
-    .cnt_lightbox .lightbox_it img {
-      -webkit-transition: all 0.2s ease-out;
-      -o-transition: all 0.2s ease-out;
-      transition: all 0.2s ease-out;
-      -webkit-box-shadow: 2px 3px 1px 0px rgba(0, 0, 0, 0.5);
-      -moz-box-shadow: 2px 3px 1px 0px rgba(0, 0, 0, 0.5);
-      box-shadow: 2px 3px 1px 0px rgba(0, 0, 0, 0.5); }
+  .cnt_lightbox .lightbox_it:hover img {
+    -webkit-box-shadow: 2px 3px 2px 2px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 2px 3px 2px 2px rgba(0, 0, 0, 0.6);
+    box-shadow: 2px 3px 2px 2px rgba(0, 0, 0, 0.6);
+    margin-top: -8px; }
+  .cnt_lightbox .lightbox_it:last-child {
+    margin: 0; }
+  .cnt_lightbox .lightbox_it img {
+    margin: 0 11px 12px 0;
+    -webkit-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+    -webkit-box-shadow: 2px 3px 1px 0px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 2px 3px 1px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: 2px 3px 1px 0px rgba(0, 0, 0, 0.5); }
 
 .backgroundSLB {
   display: none;
