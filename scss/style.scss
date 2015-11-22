@@ -148,7 +148,7 @@ header{
 .cnt_lightbox{
   margin:20px 0 0 0px;
   & .lightbox_it{
-    margin: 0 12px 0 0;
+    margin: 0 12px 12px 0;
     &:hover img{
       @include bShad(2px, 3px, 2px, 2px, rgba(0,0,0,0.6));
       margin-top:-8px;
@@ -188,6 +188,8 @@ header{
   position: relative;
   background-color: white;
   margin: 0 auto;
+  width:300px;
+  height:300px;
   padding: 3px;
   box-sizing: content-box;
   *zoom: 1;
@@ -213,7 +215,6 @@ header{
     width: 50%;
     height: 100%;
     left: 0;
-    padding-top: 48%;
     position: absolute;
     @include tran(all 0.2s ease-out);
     &:hover .icon-chevron-left{
@@ -225,6 +226,7 @@ header{
     color:#000000;
     width: 50%;
     left: 20px;
+    top: 45%;
     position: absolute;
     opacity: 0;
     font-size: 35px;
@@ -234,7 +236,6 @@ header{
     width: 50%;
     height: 100%;
     right: 0;
-    padding-top: 48%;
     position: absolute;
     @include tran(all 0.2s ease-out);
     &:hover .icon-chevron-right{
@@ -247,6 +248,7 @@ header{
     text-align: right;
     width: 50%;
     right: 20px;
+    top: 45%;
     position: absolute;
     opacity: 0;
     font-size: 35px;
