@@ -1,0 +1,272 @@
+﻿@import "normalize";
+@import "main";
+//Colors:
+$wh:#ffffff;
+$bl:#000000;
+$main_c:#FE8E0D;
+$main_c_dark:#E55005;
+$main_c_dark_2:#ff6f00;
+$main_c_light:#FFF3E4;
+$main_c_light_2:#FE8E0D;
+$sub_c_1:#BBC3C7;
+$sub_c_2:#8FA3AD;
+$sub_c_3:#778F9B;
+$sub_c_4:#536D79;
+$sub_c_5:#546e7a;
+$sub_c_text:#37474f;
+//Sizes
+$site_width:960px;
+$content_width:940px;
+//Mixins
+@mixin site_text($size, $color, $upper, $weight, $lH, $margin){
+	font-size:$size;
+	color:$color;
+	text-transform:$upper;
+	font-weight:$weight;
+	line-height:$lH;
+	margin:$margin;
+}
+@mixin tran($Tfunc){
+	-webkit-transition:$Tfunc;
+	-o-transition:$Tfunc;
+	transition:$Tfunc;
+}
+@mixin anim($name, $duration, $iteration, $timing){
+	-webkit-animation-name: $name;
+	-o-animation-name: $name;
+	animation-name: $name;
+	-webkit-animation-duration: $duration;
+	-o-animation-duration: $duration;
+	animation-duration: $duration;
+	-webkit-animation-iteration-count: $iteration;
+	-o-animation-iteration-count: $iteration;
+	animation-iteration-count: $iteration;
+	-webkit-animation-timing-function: $timing;
+	-o-animation-timing-function: $timing;
+	animation-timing-function: $timing;
+}
+@mixin bShad($x, $y, $blur, $radius, $color){
+  -webkit-box-shadow: $x $y $blur $radius $color;
+  -moz-box-shadow: $x $y $blur $radius $color;
+  box-shadow: $x $y $blur $radius $color;
+}
+@mixin transform($func){
+  -webkit-transform: $func;
+     -moz-transform: $func;
+      -ms-transform: $func;
+       -o-transform: $func;
+          transform: $func;
+}
+@mixin borderR($val){
+  -webkit-border-radius: $val;
+  -moz-border-radius: $val;
+  -ms-border-radius: $val;
+  -o-border-radius: $val;
+  border-radius: $val;
+}
+//Common styles
+.btn{
+	background: rgb(43,139,192); /* Old browsers */
+	background: -moz-linear-gradient(top, rgba(43,139,192,1) 0%, rgba(35,94,152,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, rgba(43,139,192,1) 0%,rgba(35,94,152,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, rgba(43,139,192,1) 0%,rgba(35,94,152,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2b8bc0', endColorstr='#235e98',GradientType=0 ); 
+	border-bottom:2px solid #1a4b7a;
+	padding:10px 15px 9px 15px;
+	border-right:none;
+	border-top:none;
+	border-left:none;
+	color:$wh;
+	font-size:21px;
+	display:inline-block;
+	border-radius:3px;
+	@include tran(all 0.2s ease-out);
+	&:hover{
+		background: rgb(26,75,122); /* Old browsers */
+		background: -moz-linear-gradient(top, rgba(26,75,122,1) 0%, rgba(26,75,122,1) 100%); /* FF3.6-15 */
+		background: -webkit-linear-gradient(top, rgba(26,75,122,1) 0%,rgba(26,75,122,1) 100%); /* Chrome10-25,Safari5.1-6 */
+		background: linear-gradient(to bottom, rgba(26,75,122,1) 0%,rgba(26,75,122,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1a4b7a', endColorstr='#1a4b7a',GradientType=0 );
+	}
+}
+.left{float:left;}
+.right{float:right;}
+a{
+	text-decoration:none;
+	@include tran(all 0.2s ease-out);
+}
+ul{
+	list-style-type:none;
+	padding:0;
+	margin:0;
+}
+body{
+	font-family: 'Open-sans', sans-serif;
+	background-color:#ffffff;
+}
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.clearfix {
+    *zoom: 1;
+}
+.bold{
+	font-weight:bold;
+}
+main{
+  @include bShad(0px, 2px, 2px, 2px, rgba(0,0,0,0.2));
+  width:$site_width;
+  margin:0 auto 0;
+}
+//HEADER=======================================================
+header{
+	padding:20px;
+  background:#424242;
+  @include bShad(0px, 1px, 1px, 1px, rgba(0,0,0,0.8));
+  & h1{
+    color:#ffffff;
+  }
+}
+//CONTENT=================================================
+.content{
+	width:$site_width;
+  margin:0 auto 0;
+  padding:20px;
+}
+.cnt_lightbox{
+  margin:20px 0 0 0px;
+  & .lightbox_it{
+    margin: 0 12px 0 0;
+    &:hover img{
+      @include bShad(2px, 3px, 2px, 2px, rgba(0,0,0,0.6));
+      margin-top:-8px;
+    }
+    &:last-child{
+      margin:0;
+    }
+    & img{
+      @include tran(all 0.2s ease-out);
+      @include bShad(2px, 3px, 1px, 0px, rgba(0,0,0,0.5));
+    }
+  }
+}
+.backgroundSLB {
+  display: none;
+  position: absolute;
+  background-color: black;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  opacity: 0.0;
+  width: 100%;
+  height:100%;
+  @include tran(all 0.2s ease-out);
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+}
+.simpleBox {
+  display: none;
+  opacity:0;
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  z-index: 11;
+}
+.simpleBoxWrap{
+  position: relative;
+  background-color: white;
+  margin: 0 auto;
+  padding: 3px;
+  box-sizing: content-box;
+  *zoom: 1;
+  @include bShad(2px, 2px, 1px, 0px, rgba(0,0,0,0.8));
+  @include borderR(3px);
+
+}
+.BoxWrapImg{
+  display: none;
+  opacity: 0;
+  height: auto;
+  max-width: inherit;
+  @include borderR(3px);
+}
+.BoxWrapNav{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 12;
+  & .chevron-left{
+    width: 50%;
+    height: 100%;
+    left: 0;
+    padding-top: 48%;
+    position: absolute;
+    @include tran(all 0.2s ease-out);
+    &:hover .icon-chevron-left{
+      left:-15px;
+      opacity: 1;
+    }
+  }
+  & .icon-chevron-left{
+    color:#000000;
+    width: 50%;
+    left: 20px;
+    position: absolute;
+    opacity: 0;
+    font-size: 35px;
+    @include tran(all 0.2s ease-out);
+  }
+  & .chevron-right{
+    width: 50%;
+    height: 100%;
+    right: 0;
+    padding-top: 48%;
+    position: absolute;
+    @include tran(all 0.2s ease-out);
+    &:hover .icon-chevron-right{
+      right:-15px;
+      opacity: 1;
+    }
+  }
+  & .icon-chevron-right{
+    color:#000000;
+    text-align: right;
+    width: 50%;
+    right: 20px;
+    position: absolute;
+    opacity: 0;
+    font-size: 35px;
+    @include tran(all 0.2s ease-out);
+  }
+}
+//FOOTER====================================================
+footer{
+}
+.footer_wrap{
+	width:$site_width;
+	margin:0 auto 0;
+	padding:60px 0;
+}
+.footer_under_wrap{
+	width:$site_width;
+	margin:0 auto 0;
+	padding:23px 0;
+	& .copyright{
+		@include site_text(14px, $bl, none, normal, 1.5, 0 0 0 0);
+		margin-top: 73px;
+	}
+}
